@@ -57,15 +57,10 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
-    // dependency injection
+    // Dagger 2
     implementation "com.google.dagger:dagger:$dagger2_version"
-    implementation "com.google.dagger:dagger-android:$dagger2_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger2_version"
     kapt "com.google.dagger:dagger-compiler:$dagger2_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
-    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
-    compileOnly 'javax.annotation:jsr250-api:1.0'
-    implementation 'javax.inject:javax.inject:1'
+    compileOnly "org.glassfish:javax.annotation:3.1.1"
 
     //Rx
     implementation "io.reactivex.rxjava2:rxjava:2.2.0"
