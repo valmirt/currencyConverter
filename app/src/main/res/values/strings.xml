@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">currencyConverter</string>
+    <string name="base_name">European Union (EUR)</string>
+    <string name="default_base_value">€ 1,00</string>
 </resources>

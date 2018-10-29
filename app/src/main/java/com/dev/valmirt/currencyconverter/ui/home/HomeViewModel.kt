@@ -1,5 +1,7 @@
 package com.dev.valmirt.currencyconverter.ui.home
 
+import android.arch.lifecycle.MutableLiveData
+import android.view.View
 import com.dev.valmirt.currencyconverter.base.BaseViewModel
 import com.dev.valmirt.currencyconverter.model.Currency
 import com.dev.valmirt.currencyconverter.remote.CurrencyEndPoint
@@ -13,7 +15,9 @@ class HomeViewModel: BaseViewModel() {
 
     @Inject
     lateinit var api: Retrofit
-
+    val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
+    val errorMessage:MutableLiveData<String> = MutableLiveData()
+    val resultCurrency: MutableLiveData<Currency> = MutableLiveData()
     private lateinit var subscription: Disposable
 
     init {
@@ -25,7 +29,7 @@ class HomeViewModel: BaseViewModel() {
         subscription.dispose()
     }
 
-    private fun loadingCurrency(){
+    fun loadingCurrency(){
         val call = api.create(CurrencyEndPoint::class.java)
 
         subscription = call.getCurrency().subscribeOn(Schedulers.io())
@@ -39,19 +43,20 @@ class HomeViewModel: BaseViewModel() {
     }
 
     private fun onRetrieveCurrencyFinish() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        loadingVisibility.value = View.GONE
     }
 
     private fun onRetrieveCurrencyStart() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        loadingVisibility.value = View.VISIBLE
+        errorMessage.value = null
     }
 
     private fun onErrorResponse(message: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        errorMessage.value = message
     }
 
     private fun onSuccessResponse(result: Currency?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        resultCurrency.value = result
     }
 
 }
