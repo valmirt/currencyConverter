@@ -2,4 +2,12 @@
     <string name="app_name">currencyConverter</string>
     <string name="base_name">European Union (EUR)</string>
     <string name="default_base_value">€ 1,00</string>
+    <string name="aud_name">Australian Dollar (AUD)</string>
+    <string name="brl_name">Brazilian Real (BRL)</string>
+    <string name="cad_name">Canadian Dollar (CAD)</string>
+    <string name="cny_name">China Yuan (CNY)</string>
+    <string name="jpy_name">Japan Yen (JPY)</string>
+    <string name="rub_name">Russian Ruble (RUB)</string>
+    <string name="usd_name">United States Dollar (USD)</string>
+    <string name="error_message">Something is wrong! Try again later.</string>
 </resources>

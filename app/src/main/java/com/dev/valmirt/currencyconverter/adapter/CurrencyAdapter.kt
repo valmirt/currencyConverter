@@ -10,11 +10,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.dev.valmirt.currencyconverter.R
-import com.dev.valmirt.currencyconverter.model.Country
 
 class CurrencyAdapter (var context: Context) : RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder>() {
 
-    private var list = ArrayList<Country>(0)
+    private var list = ArrayList<String>(0)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {
         val context = parent.context
@@ -27,7 +26,13 @@ class CurrencyAdapter (var context: Context) : RecyclerView.Adapter<CurrencyAdap
 
     override fun onBindViewHolder(holder: CurrencyViewHolder, position: Int) {
         val item = list[position]
-        holder.fillData(item, context)
+        holder.fillData(item, position, context)
+    }
+
+    fun insertData(data: List<String>){
+        this.list.clear()
+        this.list.addAll(data)
+        notifyDataSetChanged()
     }
 
     inner class CurrencyViewHolder(noteView: View): RecyclerView.ViewHolder(noteView){
@@ -36,36 +41,42 @@ class CurrencyAdapter (var context: Context) : RecyclerView.Adapter<CurrencyAdap
         private val textCurrency = noteView.findViewById<TextView>(R.id.value_currency)
 
         @SuppressLint("SetTextI18n")
-        fun fillData(data: Country, context: Context){
-            textName.text = data.name+" ("+data.id+")"
-            when(data.id){
-                "AUD"->{
+        fun fillData(data: String, position: Int, context: Context){
+            when(position){
+                0 ->{
                     image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.aud_flag))
-                    textCurrency.text = "$"+data.currency
+                    textName.text = context.getString(R.string.aud_name)
+                    textCurrency.text = "$$data"
                 }
-                "BRL"->{
+                1 ->{
                     image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.brl_flag))
-                    textCurrency.text = "R$"+data.currency
+                    textName.text = context.getString(R.string.brl_name)
+                    textCurrency.text = "R$$data"
                 }
-                "CAD"->{
+                2->{
                     image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.cad_flag))
-                    textCurrency.text = "C$"+data.currency
+                    textName.text = context.getString(R.string.cad_name)
+                    textCurrency.text = "C$$data"
                 }
-                "CNY"->{
+                3 ->{
                     image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.cny_flag))
-                    textCurrency.text = "¥"+data.currency
+                    textName.text = context.getString(R.string.cny_name)
+                    textCurrency.text = "¥$data"
                 }
-                "JPY"->{
+                4->{
                     image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.jpy_flag))
-                    textCurrency.text = "JP¥"+data.currency
+                    textName.text = context.getString(R.string.jpy_name)
+                    textCurrency.text = "JP¥$data"
                 }
-                "RUB"->{
+                5->{
                     image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.rub_flag))
-                    textCurrency.text = "\u20BD"+data.currency
+                    textName.text = context.getString(R.string.rub_name)
+                    textCurrency.text = "₽$data"
                 }
-                "USD"->{
+                6->{
                     image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.usd_flag))
-                    textCurrency.text = "US$"+data.currency
+                    textName.text = context.getString(R.string.usd_name)
+                    textCurrency.text = "US$$data"
                 }
             }
         }
