@@ -5,7 +5,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.home.HomeActivity">
+        tools:context=".ui.home.HomeActivity"
+        android:id="@+id/layout_home">
     <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -40,6 +41,16 @@
                             android:layout_centerVertical="true"
                             android:layout_toEndOf="@+id/image_base_country"
                             android:layout_toRightOf="@+id/image_base_country"/>
+                    <TextView
+                            android:id="@+id/date_converter"
+                            android:layout_gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="@color/withe"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_below="@id/base_name_country"/>
                     <TextView
                             android:layout_centerVertical="true"
                             android:layout_alignParentRight="true"

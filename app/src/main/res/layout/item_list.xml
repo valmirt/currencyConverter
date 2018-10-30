@@ -9,7 +9,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp">
         <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/image_base_country"
+                android:id="@+id/image_country"
                 android:src="@drawable/ic_image_default"
                 android:layout_width="48dp"
                 android:layout_height="48dp"/>
@@ -21,13 +21,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/image_base_country"
-                android:layout_toRightOf="@+id/image_base_country"/>
+                android:layout_toEndOf="@+id/image_country"
+                android:layout_toRightOf="@+id/image_country"/>
         <TextView
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/value_base_currency"
+                android:id="@+id/value_currency"
                 android:layout_gravity="center"
                 android:textSize="14sp"
                 android:text="US$ 12,00"

@@ -3,15 +3,22 @@ package com.dev.valmirt.currencyconverter.ui.home
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import com.dev.valmirt.currencyconverter.R
+import com.dev.valmirt.currencyconverter.adapter.CurrencyAdapter
 import com.dev.valmirt.currencyconverter.base.BaseActivity
 import com.dev.valmirt.currencyconverter.model.Currency
+import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : BaseActivity<HomeViewModel>() {
+
+    private val adapter = CurrencyAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+
 
         viewModel?.errorMessage?.observe(this, Observer { error->
             setErrorResult(error)
@@ -27,7 +34,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     }
 
     private fun setErrorResult(error: String?) {
-
+        if (error != null) Snackbar.make(layout_home, error, Snackbar.LENGTH_LONG).show()
     }
 
     private fun updateValues(result: Currency?) {
