@@ -2,7 +2,6 @@ package com.dev.valmirt.currencyconverter.ui.home
 
 import android.arch.lifecycle.MutableLiveData
 import android.view.View
-import com.dev.valmirt.currencyconverter.CCApplication
 import com.dev.valmirt.currencyconverter.base.BaseViewModel
 import com.dev.valmirt.currencyconverter.model.Currency
 import com.dev.valmirt.currencyconverter.remote.CurrencyEndPoint

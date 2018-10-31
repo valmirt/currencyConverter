@@ -3,8 +3,8 @@
           package="com.dev.valmirt.currencyconverter">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
             android:name=".CCApplication"
@@ -21,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.about.AboutActivity"
+            android:label="@string/about"
+            android:parentActivityName=".ui.home.HomeActivity"/>
     </application>
 
 </manifest>

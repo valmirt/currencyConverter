@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">currencyConverter</string>
+    <string name="app_name">Currency Converter</string>
     <string name="base_name">European Union (EUR)</string>
     <string name="default_base_value">€ 1,00</string>
     <string name="aud_name">Australian Dollar (AUD)</string>
@@ -10,4 +10,13 @@
     <string name="rub_name">Russian Ruble (RUB)</string>
     <string name="usd_name">United States Dollar (USD)</string>
     <string name="error_message">Something is wrong! Try again later.</string>
+    <string name="action_search">Refresh</string>
+    <string name="info">Info</string>
+    <string name="about">About</string>
+
+    <string name="about_text_1">Information on the currency of the European Union, the euro (EUR), in relation to the main currencies in the world, updated every thirty minutes.</string>
+    <string name="about_text_2">The service used in this project is provided by Foreign exchange rates and currency conversion. For more information: \n<a href="https://fixer.io/documentation">https://fixer.io/documentation</a></string>
+    <string name="about_text_3">Developed by Valmir Torres de Jesus Junior</string>
+    <string name="about_text_4">This project is available on github: \n<a href = "https://github.com/valmirt/currencyConverter">https://github.com/valmirt/currencyConverter</a></string>
+    <string name="about_text_5">To contact, please send an email to valmirt.dev@gmail.com</string>
 </resources>

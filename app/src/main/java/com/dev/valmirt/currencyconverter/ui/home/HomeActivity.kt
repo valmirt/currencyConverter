@@ -3,16 +3,20 @@ package com.dev.valmirt.currencyconverter.ui.home
 import android.Manifest
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 import com.dev.valmirt.currencyconverter.R
 import com.dev.valmirt.currencyconverter.adapter.CurrencyAdapter
 import com.dev.valmirt.currencyconverter.base.BaseActivity
 import com.dev.valmirt.currencyconverter.model.Currency
+import com.dev.valmirt.currencyconverter.ui.about.AboutActivity
 import com.dev.valmirt.currencyconverter.utils.Constants.Companion.MY_PERMISSIONS_REQUEST
 import kotlinx.android.synthetic.main.activity_home.*
 import java.math.RoundingMode
@@ -29,7 +33,6 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         adapter = CurrencyAdapter(this)
         list_currency.layoutManager = LinearLayoutManager(this)
         list_currency.setHasFixedSize(true)
-        list_currency.isNestedScrollingEnabled = false
         list_currency.adapter = adapter
 
         viewModel?.errorMessage?.observe(this, Observer { error->
@@ -44,6 +47,25 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
             if (result != null && result.success) updateValues(result)
             else getString(R.string.error_message)
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            R.id.action_refresh -> {
+                viewModel?.loadingCurrency()
+                true
+            }
+            R.id.action_info -> {
+                startActivity(Intent(this, AboutActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun containerViewModel(): HomeViewModel? {
@@ -76,21 +98,6 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
 
     private fun showLoading(setVisibility: Int) {
         loading_screen.visibility = setVisibility
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == MY_PERMISSIONS_REQUEST) {
-            if (grantResults.isNotEmpty()
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-
-            } else {
-
-                // permission denied, boo! Disable the
-                // functionality that depends on this permission.
-            }
-        }
     }
 
     private fun requestPermission() {
