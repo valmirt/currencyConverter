@@ -1,5 +1,3 @@
-![Currency Converter](app/src/main/ic_launcher_round-web.png)
-
 # Currency Converter
 
 Information on the currency of the European Union, the euro (EUR), in relation to the main currencies in the world, updated every thirty minutes.
